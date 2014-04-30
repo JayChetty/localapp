@@ -1,0 +1,17 @@
+<h2>Add New Business</h2>
+<p>
+  Owner: <%= @owner.email %>
+</p>
+
+
+<%= form_for @business do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.label :address %>
+  <%= f.text_field :address %>
+<!--   <%= f.label :latitude %>
+  <%= f.text_field :latitude %>
+  <%= f.label :longitude %>
+  <%= f.text_field :longitude %> -->
+  <%= f.submit %>
+<% end %>

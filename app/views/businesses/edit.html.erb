@@ -1,0 +1,23 @@
+<h2>Edit Business</h2>
+<p>
+  Business: <%= @business.name %>
+</p>
+
+
+<%= form_for @business do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.label :address %>
+  <%= f.text_field :address %>
+<!--   <%= f.label :latitude %>
+  <%= f.text_field :latitude %>
+  <%= f.label :longitude %>
+  <%= f.text_field :longitude %> -->
+  <%= f.submit %>
+<% end %>
+
+Latitude
+<%= @business.latitude %>
+
+Longitude
+<%= @business.longitude %>

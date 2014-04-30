@@ -14,14 +14,10 @@
 
     jay.businesses.create!(
       name: "BookLa",
-      address: 'asdfasdf',
-      latitude: 55.95,
-      longitude: -3.18,
+      address: '6 Merchiston Park Edinburgh Scotland EH104PN'
     )
 
      jay.businesses.create!(
       name: "FoodLa",
-      address: 'qwerqwer',
-      latitude: 55.91,
-      longitude: -3.28,
+      address: '43 Warrender Park Terrace Edinburgh Scotland'
     )   
