@@ -18,6 +18,7 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'devise'
 gem 'factory_girl_rails'
 gem 'gmaps4rails'
+gem 'mapbox-rails'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby

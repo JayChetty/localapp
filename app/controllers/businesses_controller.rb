@@ -3,15 +3,32 @@ class BusinessesController < ApplicationController
   before_action :authenticate_owner!, except: [:general_index]
 
   def general_index
-    @businesses = Business.all.located
-    @hash = Gmaps4rails.build_markers(@businesses) do |business, marker|
-      # puts business
-        marker.lat business.latitude
-        marker.lng business.longitude
-        marker.infowindow business.name
-        marker.infowindow "<h4>Name:<u>#{view_context.link_to business.name, business_url(business)}</u></h4> 
-                           <h4>Owner:<u>#{view_context.link_to business.owners.first.email, business_url(business)}</u></h4> "
-    end    
+    # @businesses = Business.all.located
+
+    # @geojson = Array.new
+
+    # @businesses.each do |business|
+    #   @geojson << {
+    #     type: 'Feature',
+    #     geometry: {
+    #       type: 'Point',
+    #       coordinates: [business.longitude, business.latitude]
+    #     },
+    #     properties: {
+    #     name: business.name,
+    #     address: business.address,
+    #     :'marker-color' => '#00607d',
+    #     :'marker-symbol' => 'circle',
+    #     :'marker-size' => 'medium'
+    #     }     
+    #   }
+    # end
+
+    # respond_to do |format|
+    #   format.html
+    #   format.json { render json: @geojson }  # respond with the created JSON object
+    # end    
+
   end
 
   def index
