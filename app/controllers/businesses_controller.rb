@@ -8,6 +8,9 @@ class BusinessesController < ApplicationController
       # puts business
         marker.lat business.latitude
         marker.lng business.longitude
+        marker.infowindow business.name
+        marker.infowindow "<h4>Name:<u>#{view_context.link_to business.name, business_url(business)}</u></h4> 
+                           <h4>Owner:<u>#{view_context.link_to business.owners.first.email, business_url(business)}</u></h4> "
     end    
   end
 
