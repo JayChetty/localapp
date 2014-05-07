@@ -2,9 +2,8 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $(document).ready ->
-  alert "page has loaded!"
   console.log($('#map')[0])
-  map = L.mapbox.map('map', 'jaychetty.i61bedof').setView([40, -74.50], 9)
+  map = L.mapbox.map('map', 'jaychetty.i61bedof').setView([55.9369407, -3.2135925], 14)
 
 # window.onload(
 #   console.log('loaded', $('#map'))
