@@ -15,5 +15,6 @@
 //= require turbolinks
 //= require underscore
 //= require gmaps/google
+//= require bootstrap
 //= require mapbox.js
 //= require_tree .

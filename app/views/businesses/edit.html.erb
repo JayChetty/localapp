@@ -1,7 +1,6 @@
-<h2>Edit Business</h2>
-<p>
+<h4>
   Business: <%= @business.name %>
-</p>
+</h4>
 
 
 <%= form_for @business do |f| %>
@@ -22,4 +21,4 @@ Latitude
 Longitude
 <%= @business.longitude %>
 
-<%= link_to "Back to my businesses", businesses_path %>
+<%= link_to "Back to my all CraftPlaces", root_path %>

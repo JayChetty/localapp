@@ -10,5 +10,12 @@
  *
  *= require_self
  *= require mapbox
+ *= require bootstrap
  *= require_tree .
  */
+
+ @import "bootstrap";
+
+.navbar .navbar-default {
+  z-index:99;
+}

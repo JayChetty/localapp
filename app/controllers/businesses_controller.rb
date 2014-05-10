@@ -3,42 +3,47 @@ class BusinessesController < ApplicationController
   before_action :authenticate_owner!, except: [:general_index]
 
   def general_index
-    # @businesses = Business.all.located
+    @businesses = Business.all.located
 
-    # @geojson = Array.new
+    @geojson = Array.new
 
-    # @businesses.each do |business|
-    #   @geojson << {
-    #     type: 'Feature',
-    #     geometry: {
-    #       type: 'Point',
-    #       coordinates: [business.longitude, business.latitude]
-    #     },
-    #     properties: {
-    #     name: business.name,
-    #     address: business.address,
-    #     :'marker-color' => '#00607d',
-    #     :'marker-symbol' => 'circle',
-    #     :'marker-size' => 'medium'
-    #     }     
-    #   }
-    # end
+    @businesses.each do |business|
+      @geojson << {
+        type: 'Feature',
+        geometry: {
+          type: 'Point',
+          coordinates: [business.longitude, business.latitude]
+        },
+        properties: {
+        name: business.name,
+        address: business.address,
+        :'marker-color' => '#00607d',
+        :'marker-symbol' => 'circle',
+        :'marker-size' => 'medium'
+        }     
+      }
+    end
 
-    # respond_to do |format|
-    #   format.html
-    #   format.json { render json: @geojson }  # respond with the created JSON object
-    # end    
+    respond_to do |format|
+      format.html
+      format.json { render json: @geojson }  # respond with the created JSON object
+    end    
 
   end
 
   def index
-    @businesses = current_owner.businesses
-    @located = @businesses.located
-    @hash = Gmaps4rails.build_markers(@located) do |business, marker|
-      # puts business
-        marker.lat business.latitude
-        marker.lng business.longitude
-    end
+
+    @business = current_owner.businesses.first
+    redirect_to edit_business_path(@business)
+
+    # @located = @businesses.located
+    # @hash = Gmaps4rails.build_markers(@located) do |business, marker|
+    #   # puts business
+    #     marker.lat business.latitude
+    #     marker.lng business.longitude
+    # end
+
+
   end
 
   def edit
