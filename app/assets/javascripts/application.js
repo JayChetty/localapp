@@ -17,4 +17,9 @@
 //= require gmaps/google
 //= require bootstrap
 //= require mapbox.js
+//= require underscore
+//= require backbone
+//= require backbone_rails_sync
+//= require backbone_datalink
+//= require backbone/localapp
 //= require_tree .
