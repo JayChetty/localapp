@@ -1,7 +1,7 @@
 class Localapp.Views.BusinessesView extends Backbone.View
   template: JST["backbone/templates/businesses"]
   render:=>
-    $(@el).html(@template())
+    # $(@el).html(@template()) # not rendering template as too later for mapbox
     @map = L.mapbox.map('map', 'jaychetty.i61bedof').setView([55.9369407, -3.2135925], 14) #Edinburgh
     @getAndDrawBusinesses()
     @
