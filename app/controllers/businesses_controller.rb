@@ -1,6 +1,6 @@
 class BusinessesController < ApplicationController
 
-  before_action :authenticate_owner!, except: [:general_index]
+  before_action :authenticate_owner!, except: [:general_index, :index, :show]
 
   def general_index
     @businesses = Business.all.located
@@ -32,9 +32,9 @@ class BusinessesController < ApplicationController
   end
 
   def index
-
-    @business = current_owner.businesses.first
-    redirect_to edit_business_path(@business)
+    @businesses = Business.all
+    # @business = current_owner.businesses.first
+    # redirect_to edit_business_path(@business)
 
     # @located = @businesses.located
     # @hash = Gmaps4rails.build_markers(@located) do |business, marker|
@@ -42,6 +42,10 @@ class BusinessesController < ApplicationController
     #     marker.lat business.latitude
     #     marker.lng business.longitude
     # end
+    respond_to do |format|
+      format.html
+      format.json { render json: @businesses }  # respond with the created JSON object
+    end        
 
 
   end
