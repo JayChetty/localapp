@@ -19,11 +19,13 @@ class Localapp.Views.BusinessesView extends Backbone.View
       properties = marker.feature.properties
 
       # create custom popup
-      popupContent =  '<div class="popup">' +
-                        '<h3>' + properties.name + '</h3>' +
-                        '<p>' + properties.address + '</p>' +
-                      '</div>'
-
+      popupView = new Localapp.Views.BusinessPopupView(marker: properties)
+      popupContent = popupView.render().el
+      # popupContent =  '<div class="popup">' +
+      #                   '<h3>' + properties.name + '</h3>' +
+      #                   '<p>' + properties.address + '</p>' +
+      #                 '</div>'
+      console.log('popup contet', popupContent)
       # http://leafletjs.com/reference.html#popup
       marker.bindPopup popupContent,
         closeButton: false
