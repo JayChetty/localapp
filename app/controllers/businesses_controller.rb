@@ -2,34 +2,33 @@ class BusinessesController < ApplicationController
 
   before_action :authenticate_owner!, except: [:general_index, :index, :show]
 
-  def general_index
-    @businesses = Business.all.located
+  # def general_index
+  #   @businesses = Business.all.located
 
-    @geojson = Array.new
+  #   @geojson = Array.new
 
-    @businesses.each do |business|
-      @geojson << {
-        type: 'Feature',
-        geometry: {
-          type: 'Point',
-          coordinates: [business.longitude, business.latitude]
-        },
-        properties: {
-        name: business.name,
-        address: business.address,
-        :'marker-color' => '#00607d',
-        :'marker-symbol' => 'circle',
-        :'marker-size' => 'medium'
-        }     
-      }
-    end
+  #   @businesses.each do |business|
+  #     @geojson << {
+  #       type: 'Feature',
+  #       geometry: {
+  #         type: 'Point',
+  #         coordinates: [business.longitude, business.latitude]
+  #       },
+  #       properties: {
+  #       name: business.name,
+  #       address: business.address,
+  #       :'marker-color' => '#00607d',
+  #       :'marker-symbol' => 'circle',
+  #       :'marker-size' => 'medium'
+  #       }     
+  #     }
+  #   end
 
-    respond_to do |format|
-      format.html
-      format.json { render json: @geojson }  # respond with the created JSON object
-    end    
-
-  end
+  #   respond_to do |format|
+  #     format.html
+  #     format.json { render json: @geojson }  # respond with the created JSON object
+  #   end    
+  # end
 
   def index
     @businesses = Business.all
@@ -46,9 +45,12 @@ class BusinessesController < ApplicationController
       format.html
       format.json { render json: @businesses }  # respond with the created JSON object
     end        
-
-
   end
+
+  # def edit_my_business
+  #   business = current_owner.business.
+
+  # end
 
   def edit
     @business = current_owner.businesses.find(params[:id])

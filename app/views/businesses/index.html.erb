@@ -1,13 +1,8 @@
-<h2>My Local Businesses</h2>
+<div id='map'></div>
 
-<ul class = "business_list">
-  <% @businesses.each do |business|%>
-    <li>
-      <%= link_to business.name, edit_business_path(business) %>
-    </li>
-  <% end %>
-</ul>
-
-<%= link_to "Add new business", new_business_path %>
-
-<%= link_to "See All Businesses", root_path %>
+<script type="text/javascript">
+  $(function() {
+    window.router = new Localapp.Routers.BusinessesRouter();
+    Backbone.history.start();
+  });
+</script>

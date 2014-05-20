@@ -4,7 +4,12 @@
       <a class="navbar-brand" href="#">Laka</a>
     </div>
     <p class="navbar-text navbar-right">
-      <%= link_to "My Workplace", businesses_path, class: "navbar-link navbar-right" %>
+     <%#= link_to "My Workplace", businesses_path, class: "navbar-link navbar-right" %>
+      <% if current_owner %>
+        <%= link_to "My Workplace", edit_business_path(current_owner.businesses.first), class: "navbar-link navbar-right" %>
+      <% else %>
+        <%= link_to "Log In", new_owner_session_path %>
+      <% end %>
     </p>
   </div>
 </nav>

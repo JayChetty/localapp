@@ -1,5 +1,4 @@
 class Localapp.Routers.BusinessesRouter extends Backbone.Router
-  initialize:(options) =>
 
   routes:
     ".*"        : "index"
