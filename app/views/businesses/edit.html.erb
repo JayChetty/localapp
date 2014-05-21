@@ -1,24 +1,23 @@
-<h4>
-  Business: <%= @business.name %>
-</h4>
+<div class="container">
+  <div class="row">
+  <h4>
+    Business: <%= @business.name %>
+  </h4>
+  </div>
+  
+    <%= form_for @business, role: 'form' do |f| %>
+    <div class="form-group">
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </div>
+      <%= f.label :address %>
+      <%= f.text_field :address %>
+      <%= f.submit %>
+    <% end %>
+  Latitude
+  <%= @business.latitude %>
 
-
-<%= form_for @business do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= f.label :address %>
-  <%= f.text_field :address %>
-<!--   <%= f.label :latitude %>
-  <%= f.text_field :latitude %>
-  <%= f.label :longitude %>
-  <%= f.text_field :longitude %> -->
-  <%= f.submit %>
-<% end %>
-
-Latitude
-<%= @business.latitude %>
-
-Longitude
-<%= @business.longitude %>
-
-<%= link_to "Back to all CraftPlaces", businesses_path %>
+  Longitude
+  <%= @business.longitude %>
+  <%= link_to "Back to all CraftPlaces", businesses_path %>
+</div>
