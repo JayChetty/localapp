@@ -1,22 +1,30 @@
 <nav class="navbar navbar-default" role="navigation">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">Wheres Real</a>
+      <a class="navbar-brand" href="#">WheresReal</a>
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>      
     </div>
-    <% if owner_signed_in? %>
-      <a href="#" class="dropdown-toggle btn btn-default navbar-btn pull-right" data-toggle="dropdown"> Account <b class="caret"></b> </a>
-      <ul class="dropdown-menu pull-right">
-        <% if current_owner.businesses.any? && current_owner.businesses.first.id %> 
-          <li> <%= link_to "My Workplace", edit_business_path(current_owner.businesses.first) %></li>
-        <% else %>
-          <li> <%= link_to "Add My Workplace", new_business_path() %></li>
-        <% end %>
-        <li>  <%= link_to 'My Settings', edit_owner_registration_path %></li>
-        <li class="divider"></li>
-        <li><%= link_to "Logout", destroy_owner_session_path, method: :delete %></li>
-      </ul>
-    <% else %>
-      <%= link_to 'Sign in', new_owner_session_path, class:"btn btn-default navbar-btn pull-right" %>
-    <% end %>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <% if owner_signed_in? %>
+        <a href="#" class="dropdown-toggle btn btn-default navbar-btn pull-right" data-toggle="dropdown"> Account <b class="caret"></b> </a>
+        <ul class="dropdown-menu pull-right">
+          <% if current_owner.businesses.any? && current_owner.businesses.first.id %> 
+            <li> <%= link_to "My Workplace", edit_business_path(current_owner.businesses.first) %></li>
+          <% else %>
+            <li> <%= link_to "Add My Workplace", new_business_path() %></li>
+          <% end %>
+          <li>  <%= link_to 'My Settings', edit_owner_registration_path %></li>
+          <li class="divider"></li>
+          <li><%= link_to "Logout", destroy_owner_session_path, method: :delete %></li>
+        </ul>
+      <% else %>
+        <%= link_to 'Sign in', new_owner_session_path, class:"btn btn-default navbar-btn pull-right" %>
+      <% end %>
+    </div>
   </div>
 </nav>
