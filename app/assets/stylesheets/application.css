@@ -19,3 +19,7 @@
 .navbar .navbar-default {
   z-index:99;
 }
+
+ul {
+  list-style-type: none;
+}

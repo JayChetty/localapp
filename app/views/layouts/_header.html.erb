@@ -7,8 +7,7 @@
       <ul class="navbar navbar-nav navbar-right">
         <% if owner_signed_in? %>  
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              Account <b class="caret"></b>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Account <b class="caret"></b>
             </a>
 
             <ul class="dropdown-menu">
@@ -23,7 +22,7 @@
             </ul> 
           </li>  
         <% else %>
-          <li><%= link_to 'Sign in', new_owner_session_path %></li>
+          <li><%= link_to 'Sign in', new_owner_session_path, class:"btn btn-default navbar-btn" %></li>
         <% end %>         
       </ul>
     </div>
