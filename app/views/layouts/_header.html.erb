@@ -3,28 +3,28 @@
     <div class="navbar-header">
       <a class="navbar-brand" href="#">Laka</a>
     </div>
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="navbar navbar-nav navbar-right">
-        <% if owner_signed_in? %>  
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Account <b class="caret"></b>
-            </a>
+    
+    <ul class="navbar navbar-nav navbar-right">
+      <% if owner_signed_in? %>  
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Account <b class="caret"></b>
+          </a>
 
-            <ul class="dropdown-menu">
-              <% if current_owner.businesses.any? && current_owner.businesses.first.id %> 
-                <li> <%= link_to "My Workplace", edit_business_path(current_owner.businesses.first) %></li>
-              <% else %>
-                <li> <%= link_to "Add My Workplace", new_business_path() %></li>
-              <% end %>
-              <li>  <%= link_to 'My Settings', edit_owner_registration_path %></li>
-              <li class="divider"></li>
-              <li><%= link_to "Logout", destroy_owner_session_path, method: :delete %></li>
-            </ul> 
-          </li>  
-        <% else %>
-          <li><%= link_to 'Sign in', new_owner_session_path, class:"btn btn-default navbar-btn" %></li>
-        <% end %>         
-      </ul>
-    </div>
+          <ul class="dropdown-menu">
+            <% if current_owner.businesses.any? && current_owner.businesses.first.id %> 
+              <li> <%= link_to "My Workplace", edit_business_path(current_owner.businesses.first) %></li>
+            <% else %>
+              <li> <%= link_to "Add My Workplace", new_business_path() %></li>
+            <% end %>
+            <li>  <%= link_to 'My Settings', edit_owner_registration_path %></li>
+            <li class="divider"></li>
+            <li><%= link_to "Logout", destroy_owner_session_path, method: :delete %></li>
+          </ul> 
+        </li>  
+      <% else %>
+        <li><%= link_to 'Sign in', new_owner_session_path, class:"btn btn-default navbar-btn" %></li>
+      <% end %>         
+    </ul>
+
   </div>
 </nav>
