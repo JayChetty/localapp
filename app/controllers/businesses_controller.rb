@@ -18,9 +18,9 @@ class BusinessesController < ApplicationController
   end
 
 
-  def edit
-    @business = current_owner.businesses.find(params[:id])
-  end
+  # def edit
+  #   @business = current_owner.businesses.find(params[:id])  
+  # end
 
   def new
     @owner = current_owner
@@ -42,18 +42,23 @@ class BusinessesController < ApplicationController
 
   def update
     @business = current_owner.businesses.find(params[:id])
-    if @business.update_attributes(business_params)
-      flash[:success] = "Business Updated"
-      redirect_to edit_business_path(@business)
-    else
-      flash[:failure] = "Could not update Business"
-      redirect_to edit_business_path(@business)
-    end    
+    @business.update_attributes(business_params)
+    respond_to do |format|
+      format.html
+      format.json { render json: @businesses.to_json(methods: :has_current_owner) }
+    end      
+    # if @business.update_attributes(business_params)
+    #   flash[:success] = "Business Updated"
+    #   redirect_to edit_business_path(@business)
+    # else
+    #   flash[:failure] = "Could not update Business"
+    #   redirect_to edit_business_path(@business)
+    # end    
   end
 
   private
     def business_params
-      params.require(:business).permit(:name, :address, :latitude, :longitude)
+      params.require(:business).permit(:name, :address, :latitude, :longitude, :description)
     end  
 
 end
