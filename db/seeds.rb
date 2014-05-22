@@ -13,11 +13,18 @@
                          )
 
     jay.businesses.create!(
-      name: "BookLa",
+      name: "NachoJoint",
       address: '6 Merchiston Park Edinburgh Scotland EH104PN'
     )
 
-     jay.businesses.create!(
-      name: "FoodLa",
-      address: '43 Warrender Park Terrace Edinburgh Scotland'
-    )   
+
+    msabsolute  = Owner.create!(
+                         email: "msabsolute@gmail.com",
+                         password: "password",
+                         password_confirmation: "password"
+                         )
+
+    msabsolute.businesses.create!(
+      name: "Absolute Thai",
+      address: '22 Valleyfield St, Edinburgh, Midlothian EH39LR'
+    )

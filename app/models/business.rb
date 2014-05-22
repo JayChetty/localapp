@@ -1,4 +1,5 @@
 class Business < ActiveRecord::Base
+  attr_accessor :has_current_owner
   has_many :ownerships
   has_many :owners, through: :ownerships
   geocoded_by :address
@@ -8,5 +9,6 @@ class Business < ActiveRecord::Base
 
   def self.located
     scoped.where("longitude IS NOT NULL AND latitude IS NOT NULL")
-  end  
+  end
+
 end

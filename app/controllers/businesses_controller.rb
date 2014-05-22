@@ -1,32 +1,26 @@
 class BusinessesController < ApplicationController
 
-  before_action :authenticate_owner!, except: [:general_index]
+  before_action :authenticate_owner!, except: [:general_index, :index, :show]
 
-  def general_index
-    @businesses = Business.all.located
-    @hash = Gmaps4rails.build_markers(@businesses) do |business, marker|
-      # puts business
-        marker.lat business.latitude
-        marker.lng business.longitude
-        marker.infowindow business.name
-        marker.infowindow "<h4>Name:<u>#{view_context.link_to business.name, business_url(business)}</u></h4> 
-                           <h4>Owner:<u>#{view_context.link_to business.owners.first.email, business_url(business)}</u></h4> "
-    end    
-  end
 
   def index
-    @businesses = current_owner.businesses
-    @located = @businesses.located
-    @hash = Gmaps4rails.build_markers(@located) do |business, marker|
-      # puts business
-        marker.lat business.latitude
-        marker.lng business.longitude
+    @businesses = Business.all
+    if current_owner
+      current_business = current_owner.businesses.first
+      @businesses.each do |b|
+        b.has_current_owner = (b == current_business)
+      end
     end
+    respond_to do |format|
+      format.html
+      format.json { render json: @businesses.to_json(methods: :has_current_owner) }
+    end        
   end
 
-  def edit
-    @business = current_owner.businesses.find(params[:id])
-  end
+
+  # def edit
+  #   @business = current_owner.businesses.find(params[:id])  
+  # end
 
   def new
     @owner = current_owner
@@ -48,18 +42,23 @@ class BusinessesController < ApplicationController
 
   def update
     @business = current_owner.businesses.find(params[:id])
-    if @business.update_attributes(business_params)
-      flash[:success] = "Business Updated"
-      redirect_to edit_business_path(@business)
-    else
-      flash[:failure] = "Could not update Business"
-      redirect_to edit_business_path(@business)
-    end    
+    @business.update_attributes(business_params)
+    respond_to do |format|
+      format.html
+      format.json { render json: @businesses.to_json(methods: :has_current_owner) }
+    end      
+    # if @business.update_attributes(business_params)
+    #   flash[:success] = "Business Updated"
+    #   redirect_to edit_business_path(@business)
+    # else
+    #   flash[:failure] = "Could not update Business"
+    #   redirect_to edit_business_path(@business)
+    # end    
   end
 
   private
     def business_params
-      params.require(:business).permit(:name, :address, :latitude, :longitude)
+      params.require(:business).permit(:name, :address, :latitude, :longitude, :description)
     end  
 
 end

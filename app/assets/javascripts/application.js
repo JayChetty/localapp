@@ -13,7 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require gmaps/google
+//= require underscore
+//= require bootstrap
+//= require mapbox.js
 //= require underscore
 //= require backbone
 //= require backbone_rails_sync

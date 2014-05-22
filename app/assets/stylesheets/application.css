@@ -9,5 +9,13 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ *= require mapbox
+ *= require bootstrap
  *= require_tree .
  */
+
+ @import "bootstrap";
+
+.navbar .navbar-default {
+  z-index:99;
+}
