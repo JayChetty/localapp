@@ -1,5 +1,5 @@
 Localapp::Application.routes.draw do
-  devise_for :owners
+  devise_for :owners, :controllers => { :registrations => "registrations" }
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

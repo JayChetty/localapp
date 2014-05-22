@@ -29,39 +29,36 @@ class Localapp.Views.BusinessesView extends Backbone.View
   drawMarkers: =>
     geoObjects = []
     @businesses.each((business)=>
-      console.log('business', business)
       if business.get('has_current_owner')
-        geoObjects.push({
-          type: 'Feature',
-          geometry: {
-            type: 'Point',
-            coordinates: [business.get('longitude'), business.get('latitude')]
-          },
-          properties: {
-            name: business.get('name'),
-            address: business.get('address'),    
-            'marker-color': '#990000',
-            'marker-symbol': 'circle',
+        geoObjects.push(
+          type: 'Feature'
+          geometry:
+            type: 'Point'
+            coordinates: [business.get('longitude'), business.get('latitude')]          
+          properties: 
+            owned: true
+            name: business.get('name')
+            address: business.get('address')
+            'marker-color': '#990000'
+            'marker-symbol': 'circle'
             'marker-size': 'medium'
-          },
           business: business    
-        })
+        )
       else
-        geoObjects.push({
-          type: 'Feature',
-          geometry: {
-            type: 'Point',
-            coordinates: [business.get('longitude'), business.get('latitude')]
-          },
-          properties: {
-            name: business.get('name'),
-            address: business.get('address'),    
-            'marker-color': '#00607d',
-            'marker-symbol': 'circle',
-            'marker-size': 'medium'
-          },
+        geoObjects.push(
+          type: 'Feature'
+          geometry: 
+            type: 'Point'
+            coordinates: [business.get('longitude'), business.get('latitude')]     
+          properties: 
+            owned: false
+            name: business.get('name')
+            address: business.get('address')
+            'marker-color': '#00607d'
+            'marker-symbol': 'circle'
+            'marker-size': 'medium'      
           business: business    
-        })
+        )
     )
     @map.featureLayer.setGeoJSON(geoObjects)
 
