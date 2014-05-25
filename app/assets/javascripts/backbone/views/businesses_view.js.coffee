@@ -3,6 +3,7 @@ class Localapp.Views.BusinessesView extends Backbone.View
 
   initialize:(options)=>
     @geoObjects = []
+
   render:=>
     # $(@el).html(@template()) # not rendering template as too later for mapbox
     @map = L.mapbox.map('map', 'jaychetty.i61bedof').setView([55.9369407, -3.2135925], 14) #Edinburgh
@@ -69,16 +70,20 @@ class Localapp.Views.BusinessesView extends Backbone.View
     console.log('drawing markers', @geoObjects)
     console.log('drawing markers length', @geoObjects.length)
     # @map.featureLayer.setGeoJSON(geoObjects)
-    @map.featureLayer.setGeoJSON(@geoObjects)
+
+    # @map.featureLayer.setGeoJSON(@geoObjects)
+    businessFeatureLayer = L.mapbox.featureLayer(@geoObjects) 
+    businessFeatureLayer.addTo(@map)
+    
     console.log('feature layer', @map.featureLayer)
     window.featureLayer = @map.featureLayer
     window.geoObjects = @geoObjects
     console.log('geo json', @map.featureLayer.getGeoJSON())
-    if @map.featureLayer.getGeoJSON().length != undefined
-      console.log('has length')
-    else
-      console.log('doesnt have length')
-      @map.featureLayer.setGeoJSON(@geoObjects)
+    # if @map.featureLayer.getGeoJSON().length != undefined
+    #   console.log('has length')
+    # else
+    #   console.log('doesnt have length')
+    #   @map.featureLayer.setGeoJSON(@geoObjects)
     # if @map.featureLayer._geojson.length == undefined
     #   console.log('no features', geoObjects)
     #   @map.featureLayer.setGeoJSON(geoObjects)
