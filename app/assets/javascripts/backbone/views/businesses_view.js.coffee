@@ -19,9 +19,9 @@ class Localapp.Views.BusinessesView extends Backbone.View
       properties = marker.feature.properties
 
       # create custom popup
-      if marker.feature.business
+      if properties.business
         console.log('has business')
-        popupView = new Localapp.Views.BusinessPopupView(marker: properties, business: marker.feature.business)
+        popupView = new Localapp.Views.BusinessPopupView(marker: properties, business: properties.business)
         popupContent = popupView.render().el
         # http://leafletjs.com/reference.html#popup
         marker.bindPopup popupContent,
@@ -38,14 +38,14 @@ class Localapp.Views.BusinessesView extends Backbone.View
           geometry:
             type: 'Point'
             coordinates: [business.get('longitude'), business.get('latitude')]          
-          properties: 
+          properties:
+            business: business  
             owned: true
             name: business.get('name')
             address: business.get('address')
             'marker-color': '#990000'
             'marker-symbol': 'circle'
-            'marker-size': 'medium'
-          business: business    
+            'marker-size': 'medium'          
         )
       else
         geoObjects.push(
@@ -53,14 +53,14 @@ class Localapp.Views.BusinessesView extends Backbone.View
           geometry: 
             type: 'Point'
             coordinates: [business.get('longitude'), business.get('latitude')]     
-          properties: 
+          properties:
+            business: business   
             owned: false
             name: business.get('name')
             address: business.get('address')
             'marker-color': '#00607d'
             'marker-symbol': 'circle'
-            'marker-size': 'medium'      
-          business: business    
+            'marker-size': 'medium'                
         )
     )
     console.log('drawing markers', geoObjects)
