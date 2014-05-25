@@ -19,7 +19,7 @@ class Localapp.Views.BusinessesView extends Backbone.View
       properties = marker.feature.properties
 
       # create custom popup
-      if properties.business
+      if marker.feature.business
         console.log('has business')
         popupView = new Localapp.Views.BusinessPopupView(marker: properties, business: marker.feature.business)
         popupContent = popupView.render().el
