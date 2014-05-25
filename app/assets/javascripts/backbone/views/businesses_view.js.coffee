@@ -67,6 +67,9 @@ class Localapp.Views.BusinessesView extends Backbone.View
     console.log('drawing markers length', geoObjects.length)
     @map.featureLayer.setGeoJSON(geoObjects)
     console.log('feature layer', @map.featureLayer)
+    if @map.featureLayer._geojson.length == 0
+      console.log('no features', geoObjects)
+      @map.featureLayer.setGeoJSON(geoObjects)
     # add custom popups to each marker
 
 
