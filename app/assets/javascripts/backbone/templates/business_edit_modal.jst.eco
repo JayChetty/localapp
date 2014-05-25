@@ -2,10 +2,10 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h4> <%= name %> <h4>
+        <h4> <%= @name %> <h4>
       </div>
       <div class="modal-body">
-        <textarea id='description-text' class="form-control" rows="3"><%= description %></textarea>
+        <textarea id='description-text' class="form-control" rows="3"><%= @description %></textarea>
       </div>
       <div class="modal-footer">
         <a id ="save", href = "#" class="btn btn-primary"> Save </a>

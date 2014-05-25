@@ -23,6 +23,8 @@ gem 'mapbox-rails'
 
 gem 'bootstrap-sass'
 
+gem 'eco'
+
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
