@@ -73,6 +73,12 @@ class Localapp.Views.BusinessesView extends Backbone.View
     console.log('feature layer', @map.featureLayer)
     window.featureLayer = @map.featureLayer
     window.geoObjects = @geoObjects
+
+    if @map.featureLayer.getGeoJSON().length != undefined
+      console.log('has length')
+    else
+      console.log('doesnt have length')
+      @map.featureLayer.setGeoJSON(@geoObjects)
     # if @map.featureLayer._geojson.length == undefined
     #   console.log('no features', geoObjects)
     #   @map.featureLayer.setGeoJSON(geoObjects)
