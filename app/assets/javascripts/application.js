@@ -22,3 +22,6 @@
 //= require backbone_datalink
 //= require backbone/localapp
 //= require_tree .
+
+//bootstrap fix
+$('body').on('touchstart.dropdown', '.dropdown-menu', function (e) { e.stopPropagation(); });
