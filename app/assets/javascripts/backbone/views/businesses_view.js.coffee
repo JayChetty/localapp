@@ -14,10 +14,13 @@ class Localapp.Views.BusinessesView extends Backbone.View
     )
 
     @map.featureLayer.on 'layeradd', (e) ->
+      console.log('layer add', e)
       marker = e.layer
       properties = marker.feature.properties
+
       # create custom popup
       if marker.feature.business
+        console.log('has business')
         popupView = new Localapp.Views.BusinessPopupView(marker: properties, business: marker.feature.business)
         popupContent = popupView.render().el
         # http://leafletjs.com/reference.html#popup
@@ -60,6 +63,8 @@ class Localapp.Views.BusinessesView extends Backbone.View
           business: business    
         )
     )
+    console.log('drawing markers', geoObjects)
+    console.log('drawing markers length', geoObjects.length)
     @map.featureLayer.setGeoJSON(geoObjects)
     # add custom popups to each marker
 
