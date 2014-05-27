@@ -4,7 +4,7 @@ class BusinessesController < ApplicationController
 
 
   def index
-    @businesses = Business.verified
+    @businesses = Business.all
     if current_owner
       current_business = current_owner.businesses.first
       @businesses.each do |b|
