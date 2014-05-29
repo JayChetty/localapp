@@ -5,4 +5,5 @@ class Localapp.Routers.BusinessesRouter extends Backbone.Router
 
   index: ->
     view = new Localapp.Views.BusinessesView()
-    view.render()
+    $('#businesses').html(view.render().el)
+    view.renderMapAndList()

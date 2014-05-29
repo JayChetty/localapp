@@ -1,11 +1,28 @@
 class Localapp.Views.BusinessesView extends Backbone.View
   template: JST["backbone/templates/businesses"]
 
-  render:=>
-    # $(@el).html(@template()) # not rendering template as too later for mapbox
+  events:
+    'click a#business-list-item': 'openBusiness'
+
+  addList:=>
+    $('#list').html('<ul></ul>')
+
+  openBusiness:(e)=>
+    e.preventDefault() if e
+    target = e.target
+    leafletId = target.getAttribute('data-marker-id')
+    console.log('target',target)
+    console.log('lid',target.getAttribute('data-marker-id'))
+    @map._layers[leafletId].openPopup()
+
+  renderMapAndList:=>
     @map = L.mapbox.map('map', 'jaychetty.i61bedof').setView([55.9369407, -3.2135925], 14) #Edinburgh
+    @addList()
     @businessFeatureLayer = L.mapbox.featureLayer()
-    @getAndDrawBusinesses()
+    @getAndDrawBusinesses()     
+
+  render:=>
+    $(@el).html(@template()) # not rendering template as too later for mapbox 
     @
 
   getAndDrawBusinesses: =>
@@ -16,13 +33,11 @@ class Localapp.Views.BusinessesView extends Backbone.View
     )
 
     @businessFeatureLayer.on 'layeradd', (e) ->
-      console.log('layer add', e)
       marker = e.layer
       properties = marker.feature.properties
 
       # create custom popup
       if properties.business
-        console.log('has business')
         popupView = new Localapp.Views.BusinessPopupView(marker: properties, business: properties.business)
         popupContent = popupView.render().el
         # http://leafletjs.com/reference.html#popup
@@ -30,6 +45,8 @@ class Localapp.Views.BusinessesView extends Backbone.View
           closeButton: true
           minWidth: 320
 
+        console.log('e',e)  
+        $('#list').append("<li> <a id='business-list-item' data-marker-id='#{marker._leaflet_id}'> #{properties.name} </a></li>")
          
 
   drawMarkers: =>
@@ -66,29 +83,9 @@ class Localapp.Views.BusinessesView extends Backbone.View
             'marker-size': 'medium'                
         )
     )
-    console.log('drawing markers', geoObjects)
-    console.log('drawing markers length', geoObjects.length)
-    # @map.featureLayer.setGeoJSON(geoObjects)
-
-    # @map.featureLayer.setGeoJSON(@geoObjects)
-    
+   
     @businessFeatureLayer.setGeoJSON(geoObjects)
     @businessFeatureLayer.addTo(@map)
-
-    console.log('businessFeatureLayer', @businessFeatureLayer)
-    console.log('feature layer', @map.featureLayer)
-    # window.featureLayer = @map.featureLayer
-    # window.geoObjects = @geoObjects
-    # console.log('geo json', @map.featureLayer.getGeoJSON())
-    # if @map.featureLayer.getGeoJSON().length != undefined
-    #   console.log('has length')
-    # else
-    #   console.log('doesnt have length')
-    #   @map.featureLayer.setGeoJSON(@geoObjects)
-    # if @map.featureLayer._geojson.length == undefined
-    #   console.log('no features', geoObjects)
-    #   @map.featureLayer.setGeoJSON(geoObjects)
-    # add custom popups to each marker
 
 
 
