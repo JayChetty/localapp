@@ -4,8 +4,12 @@ class BusinessesController < ApplicationController
 
 
   def index
-    @businesses = Business.where(verified: true)
-    if current_owner
+    if current_owner && current_owner.admin
+      @businesses = Business.all
+    else
+      @businesses = Business.where(verified: true)
+    end
+    if current_owner   
       current_business = current_owner.businesses.first
       if current_business && !current_business.verified
         @businesses << current_business
@@ -18,6 +22,20 @@ class BusinessesController < ApplicationController
       format.html
       format.json { render json: @businesses.to_json(methods: :has_current_owner) }
     end        
+  end
+
+  def verify
+    if current_owner.admin
+      business = Business.find(params[:id])
+      business.verified = true
+      if business.save
+        head :ok
+      else
+        raise 'problem'
+      end
+    else
+      raise 'not admin'
+    end
   end
 
 

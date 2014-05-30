@@ -6,6 +6,7 @@ class Localapp.Views.BusinessesView extends Backbone.View
 
   addList:=>
     $('#list').html('<ul></ul>')
+    $('#adminlist').html('<ul></ul>')
 
   openBusiness:(e)=>
     e.preventDefault() if e
@@ -44,12 +45,15 @@ class Localapp.Views.BusinessesView extends Backbone.View
         marker.bindPopup popupContent,
           closeButton: true
           minWidth: 320
-
-        console.log('e',e)
-      if properties.owned
+      if properties.owned    
         $('#mybusiness').html("<h5> My Business </h5> <a id='business-list-item' data-marker-id='#{marker._leaflet_id}'> #{properties.name} </a>")
-      else 
-        $('#list').append("<li> <a id='business-list-item' data-marker-id='#{marker._leaflet_id}'> #{properties.name} </a></li>")
+      else
+        console.log('properties', properties)
+        if properties.business.get('verified') == true
+          $('#list').append("<li> <a id='business-list-item' data-marker-id='#{marker._leaflet_id}'> #{properties.name} </a></li>")
+        else
+          $('#admin-list').removeClass('hidden')
+          $('#admin-list').append("<li> <a id='business-list-item' data-marker-id='#{marker._leaflet_id}'> #{properties.name} </a></li>")
          
 
   drawMarkers: =>
@@ -62,7 +66,7 @@ class Localapp.Views.BusinessesView extends Backbone.View
             type: 'Point'
             coordinates: [business.get('longitude'), business.get('latitude')]          
           properties:
-            business: business  
+            business: business
             owned: true
             name: business.get('name')
             address: business.get('address')
