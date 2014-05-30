@@ -1,2 +1,5 @@
 <div id='map'></div>
-<div id='list'></div>
+<div id='side-bar'>
+  <div id='mybusiness'></div>
+  <div id='list'> Businesses </div>  
+</div>

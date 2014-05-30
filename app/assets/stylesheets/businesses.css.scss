@@ -1,12 +1,23 @@
 // Place all the styles related to the businesses controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
- #map{
+#map{
   position:absolute; 
-  top:50px; 
+  top:53px; 
   bottom:0; 
   width:100%;
   z-index:-5;
+}
+
+#side-bar{
+  position:absolute; 
+  top:63px; 
+  bottom:10px;
+  left:10px;
+  width:20%;
+  z-index:-3;
+  background: black;
+  padding: 10px;
 }
 
 .leaflet-popup-content{
