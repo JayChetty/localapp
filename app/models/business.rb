@@ -13,5 +13,8 @@ class Business < ActiveRecord::Base
   # def self.located
   #   scoped.where("longitude IS NOT NULL AND latitude IS NOT NULL")
   # end
+  def owner_name
+    owners.first.name
+  end
 
 end

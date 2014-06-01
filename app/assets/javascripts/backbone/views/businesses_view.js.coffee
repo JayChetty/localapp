@@ -3,6 +3,38 @@ class Localapp.Views.BusinessesView extends Backbone.View
 
   events:
     'click a#business-list-item': 'openBusiness'
+    'click a#sign-out': 'signOutOwner'
+
+  getCurrentOwner:=>
+    @owners = new Localapp.Collections.CurrentOwners()
+    @owners.fetch(
+      success: =>
+        @renderOwnerButtons()
+    )
+
+  signOutOwner:=>   
+    $.ajax(
+      url: "owners/sign_out"
+      type: 'DELETE'
+      success:=>
+        window.location.reload()
+    )
+
+    
+
+  renderOwnerButtons:(data)=>
+    current_owner = @owners.first()
+    if current_owner
+      $('#sign-out').removeClass('hidden')
+      $('#edit-user').removeClass('hidden') 
+    else
+      $('#sign-in').removeClass('hidden')
+
+
+      console.log('current_owner')
+
+  # signIn:(e)=>
+  #   window.location.href = "owners/sign_up"
 
   addList:=>
     $('#side-main').html("<ul class='business-list'></ul>")
@@ -20,7 +52,8 @@ class Localapp.Views.BusinessesView extends Backbone.View
     @map = L.mapbox.map('map', 'jaychetty.i61bedof').setView([55.9369407, -3.2135925], 14) #Edinburgh
     @addList()
     @businessFeatureLayer = L.mapbox.featureLayer()
-    @getAndDrawBusinesses()     
+    @getAndDrawBusinesses()
+    @getCurrentOwner()
 
   render:=>
     $(@el).html(@template()) # not rendering template as too later for mapbox 

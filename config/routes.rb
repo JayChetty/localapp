@@ -19,6 +19,8 @@ Localapp::Application.routes.draw do
       post 'verify'
     end
   end
+
+  resources :current_owners
   # Example resource route with options:
   #   resources :products do
   #     member do

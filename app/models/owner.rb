@@ -6,4 +6,8 @@ class Owner < ActiveRecord::Base
 
   has_many :ownerships
   has_many :businesses, through: :ownerships
+
+  def business
+    businesses.first
+  end
 end

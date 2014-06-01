@@ -2,7 +2,10 @@
 <div id='side-bar'>
   <h2> OwnerOnSite </h2>
   <div id='mybusiness'></div>
-  <div id='side-main'> Businesses </div>
+  <a id='edit-user' href="owners/edit" class='btn btn-default pull-right hidden'> Edit User Details </a>
+  <a id='sign-out' class='btn btn-default pull-right hidden'> Sign Out </a>  
+  <div id='side-main'></div>
   <div id='side-admin' class='hidden'> Unverified List</div>
-  <a class='btn btn-default pull-right'> Sign In </a>
+  <a id='sign-in' href="owners/sign_in" class='btn btn-default pull-right hidden'> Sign In </a>
+
 </div>

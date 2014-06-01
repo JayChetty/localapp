@@ -20,7 +20,9 @@ class BusinessesController < ApplicationController
     end
     respond_to do |format|
       format.html
-      format.json { render json: @businesses.to_json(methods: :has_current_owner) }
+      format.json { 
+        render json: @businesses.to_json(methods: [:has_current_owner, :owner_name])
+      }
     end        
   end
 
