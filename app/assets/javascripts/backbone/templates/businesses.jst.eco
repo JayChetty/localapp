@@ -1,6 +1,6 @@
 <div id='map'></div>
 <div id='side-bar'>
   <div id='mybusiness'></div>
-  <div id='list'> Businesses </div>
-  <div id='admin-list' class='hidden'> Unverified List</div>
+  <div id='side-main'> Businesses </div>
+  <div id='side-admin' class='hidden'> Unverified List</div>
 </div>

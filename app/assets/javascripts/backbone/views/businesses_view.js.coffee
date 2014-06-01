@@ -5,8 +5,8 @@ class Localapp.Views.BusinessesView extends Backbone.View
     'click a#business-list-item': 'openBusiness'
 
   addList:=>
-    $('#list').html('<ul></ul>')
-    $('#adminlist').html('<ul></ul>')
+    $('#side-main').html("<ul class='business-list'></ul>")
+    $('#side-admin').html("<ul class='admin-list'></ul>")
 
   openBusiness:(e)=>
     e.preventDefault() if e
@@ -50,10 +50,10 @@ class Localapp.Views.BusinessesView extends Backbone.View
       else
         console.log('properties', properties)
         if properties.business.get('verified') == true
-          $('#list').append("<li> <a id='business-list-item' data-marker-id='#{marker._leaflet_id}'> #{properties.name} </a></li>")
+          $('.business-list').append("<li> <a id='business-list-item' data-marker-id='#{marker._leaflet_id}'> #{properties.name} </a></li>")
         else
-          $('#admin-list').removeClass('hidden')
-          $('#admin-list').append("<li> <a id='business-list-item' data-marker-id='#{marker._leaflet_id}'> #{properties.name} </a></li>")
+          $('#side-admin').removeClass('hidden')
+          $('.admin-list').append("<li> <a id='business-list-item' data-marker-id='#{marker._leaflet_id}'> #{properties.name} </a></li>")
          
 
   drawMarkers: =>

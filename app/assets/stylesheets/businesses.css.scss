@@ -1,6 +1,7 @@
 // Place all the styles related to the businesses controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$grayMediumLight: #eaeaea;
 
 .hidden{display:none;}
 #map{
@@ -16,7 +17,7 @@
   top:63px; 
   bottom:10px;
   left:10px;
-  width:20%;
+  width:15%;
   z-index:-3;
   background: white;
   padding: 10px;
@@ -34,4 +35,27 @@
 .modal-header{
   background: #00607d;
   color: white;
+}
+
+ul{
+  padding: 0px;
+  list-style: none;
+
+  p{
+    color: $grayMediumLight;  
+  }
+
+  li {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    // padding-left: 20px;
+    // padding-right: 20px;
+
+    // margin-bottom: 15px;
+
+    // border-top: 3px solid #e8e8e8;
+    // border-left: 3px solid #e8e8e8;
+    // border-right: 3px solid #e8e8e8;
+    border-bottom: 2px solid #e8e8e8;
+  }
 }
