@@ -1,6 +1,6 @@
 <div id='map'></div>
 <div id='side-bar'>
-  <h2> JabuJoints </h2>
+  <h2> OwnerOnSite </h2>
   <div id='mybusiness'></div>
   <div id='side-main'> Businesses </div>
   <div id='side-admin' class='hidden'> Unverified List</div>
