@@ -4,6 +4,13 @@
 $grayMediumLight: #eaeaea;
 
 .hidden{display:none;}
+
+
+@media (max-width: 800px) {
+    #side-bar{
+        display:none !important;
+    }
+}
 #map{
   position:absolute; 
   top:0px; 
