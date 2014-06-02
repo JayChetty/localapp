@@ -8,8 +8,14 @@ $grayMediumLight: #eaeaea;
 
 @media (max-width: 800px) {
     #side-bar{
-        display:none !important;
+      width:90% !important;
     }
+}
+
+a#side-bar-button{
+  position:absolute;
+  top:10px;
+  left:10px;
 }
 #map{
   position:absolute; 

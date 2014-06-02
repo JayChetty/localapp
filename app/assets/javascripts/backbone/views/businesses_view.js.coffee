@@ -4,6 +4,7 @@ class Localapp.Views.BusinessesView extends Backbone.View
   events:
     'click a#business-list-item': 'openBusiness'
     'click a#sign-out': 'signOutOwner'
+    'click a#side-bar-button': 'showList'
 
   getCurrentOwner:=>
     @owners = new Localapp.Collections.CurrentOwners()
@@ -19,6 +20,16 @@ class Localapp.Views.BusinessesView extends Backbone.View
       success:=>
         window.location.reload()
     )
+
+  showList:(ev)=>
+    ev.preventDefault() if ev
+    $('#side-bar').removeClass('hidden')
+    $('#side-bar-button').addClass('hidden') 
+
+  hideList:(ev)=>
+    ev.preventDefault() if ev
+    $('#side-bar').addClass('hidden')
+    $('#side-bar-button').removeClass('hidden') 
 
     
 
@@ -39,6 +50,8 @@ class Localapp.Views.BusinessesView extends Backbone.View
   addList:=>
     $('#side-main').html("<ul class='business-list'></ul>")
     $('#side-admin').html("<ul class='admin-list'></ul>")
+    if @mobile
+      @hideList()
 
   openBusiness:(e)=>
     e.preventDefault() if e
@@ -47,15 +60,21 @@ class Localapp.Views.BusinessesView extends Backbone.View
     console.log('target',target)
     console.log('lid',target.getAttribute('data-marker-id'))
     @map._layers[leafletId].openPopup()
+    if @mobile
+      @hideList()
 
   renderMapAndList:=>
-    @map = L.mapbox.map('map', 'jaychetty.i61bedof').setView([55.9369407, -3.2135925], 14) #Edinburgh
+    @map = L.mapbox.map('map', 'jaychetty.i61bedof',
+      zoomControl: false
+    ).setView([55.9369407, -3.2135925], 14) #Edinburgh
     @addList()
     @businessFeatureLayer = L.mapbox.featureLayer()
     @getAndDrawBusinesses()
     @getCurrentOwner()
 
   render:=>
+    if screen.width < 800
+      @mobile = true
     $(@el).html(@template()) # not rendering template as too later for mapbox 
     @
 
