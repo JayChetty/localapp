@@ -9,7 +9,8 @@
     jay  = Owner.create!(
                          email: "jaypaulchetty@gmail.com",
                          password: "password",
-                         password_confirmation: "password"
+                         password_confirmation: "password",
+                         name:"Jay Chetty"
                          )
 
     jay.businesses.create!(

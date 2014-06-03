@@ -1,16 +1,33 @@
 <div class="modal fade">
   <div class="modal-dialog">
     <div class="modal-content">
-      <div class="modal-header">
-        <h4> <%= @name %> <h4>
-      </div>
-      <div class="modal-body">
-        <textarea id='description-text' class="form-control" rows="3"><%= @description %></textarea>
-      </div>
-      <div class="modal-footer">
-        <a id ="save", href = "#" class="btn btn-primary"> Save </a>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>    
-      </div>
+      <form>
+        <div class="modal-header">
+          <input type="text" name="name" id="name" value="<%= @name %>" >
+        </div>
+        <div class="modal-body">
+          
+            <label for="description"> Description:</label>
+            <textarea id='description-text' name="description" id="description" class="form-control" rows="3"><%= @description %></textarea>
+            <label for="address"> Address:</label>
+            <textarea id='address-text' name="address" id="address" class="form-control" rows="3"><%= @address %></textarea>
+            <label for="url"> WebSite:</label>
+            <textarea id='url-text' name="url" id="url" class="form-control" rows="1"><%= @url %></textarea>
+            <label for="url"> Phone Number:</label>
+            <textarea id='phone_number' name="phone_number" id="phone_number" class="form-control" rows="1"><%= @phone_number %></textarea>
+            <label for="address"> Licensed?</label>
+            <input type="checkbox" name="license" id="license" <%= if @license then 'checked' %> > </input></br>
+            <label for="address"> Hot Drinks?</label>
+            <input type="checkbox" name="hot_drinks" id="hot_drinks" <%= if @hot_drinks then 'checked' %> > </input></br>
+            <label for="address"> Food?</label>
+            <input type="checkbox" name="food" id="food" <%= if @food then 'checked' %> > </input>
+            <!-- <input type="textarea" name="description" id="description" value="<%= name %>" > -->     
+        </div>
+        <div class="modal-footer">
+          <a id ="save", href = "#" class="btn btn-primary"> Save </a>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>    
+        </div>
+      </form>
     </div>
   </div>
 </div>

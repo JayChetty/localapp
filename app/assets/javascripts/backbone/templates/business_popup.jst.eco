@@ -1,12 +1,17 @@
-<h1> <a class='show_modal'> <%= @name %> </a> <small> Owner:<%= @business.get('owner_name') %></small> </h1>
-
+<h1> <a class='show_modal'> <%= @name %> </a>
+  <% if @business.get('food'):%> <i class='fa fa-cutlery'></i><% end %>
+  <% if @business.get('license'):%> <i class='fa fa-beer'></i><% end %>
+  <% if @business.get('hot_drinks'):%> <i class='fa fa-coffee'></i><% end %>
+</h1>
+  <!-- <small> Owner:<%= @business.get('owner_name') %></small>  -->
 <% if @owned: %>
   <a class='edit_modal'> edit your page </a>
   </br>
-<% end %>
-<% if !@business.get('verified'): %>
+<% else if !@business.get('verified'): %>
   <a class='verify'> Verify </a>
   </br>
 <% end %>
-
+<i class="fa fa-male"></i>
+<small> <%= @business.get('owner_name') %></small></br>
+<i class="fa fa-home"></i>
 <small> <%= @address %></small>

@@ -1,15 +1,46 @@
 // Place all the styles related to the businesses controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import "font-awesome";
+
 $grayMediumLight: #eaeaea;
+.mapbox-info-toggle{
+  display:none;
+}
 
 .hidden{display:none;}
 
 
-@media (max-width: 800px) {
-    #side-bar{
-      width:90% !important;
-    }
+// @media (max-width: 800px) {
+//     #side-bar{
+//       width:90% !important;
+//     }
+// }
+
+.user_links {
+  position:absolute;
+  top:8px;
+  right:8px;
+}
+
+#sign-in {
+  position:absolute;
+  bottom:5px;
+  right:5px;
+}
+
+.business_links {
+  position:absolute;
+  bottom:45px;
+  top:5px;
+  left:10px;
+  right:10px;
+  overflow-y:auto;
+}
+
+.vertical-space{
+  margin-top:20px;
+  margin-bottom:20px;
 }
 
 a#side-bar-button{
@@ -26,6 +57,7 @@ a#side-bar-button{
 }
 
 #side-bar{
+  min-width:250px;
   position:absolute; 
   top:10px; 
   bottom:10px;
@@ -37,6 +69,11 @@ a#side-bar-button{
   border-style:solid;
   border-width:3px;
   border-color: #00607d
+
+}
+
+a {
+  cursor: pointer;
 }
 
 .leaflet-popup-content{
@@ -47,7 +84,9 @@ a#side-bar-button{
 
 .modal-header{
   background: #00607d;
-  color: white;
+  h4 {
+    color: white;
+  }
 }
 
 ul{

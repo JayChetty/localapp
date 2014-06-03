@@ -9,13 +9,21 @@ class Localapp.Views.BusinessEditModalView extends Backbone.View
   save : (e) =>
     e.preventDefault()
     e.stopPropagation()
-    description = $(@el).find('#description-text').val()
-    @model.set('description', description)
+    license = @$('#license').prop('checked')
+    food = @$('#food').prop('checked')
+    hot_drinks = @$('#hot_drinks').prop('checked')
+    @model.set(
+      license: license
+      food: food
+      hot_drinks: hot_drinks
+    )
     @model.save()
+    # window.location.reload()
     @hide()
 
   render: =>
     $(@el).html(@template(@model.toJSON()))
+    @$("form").backboneLink(@model)
     @
 
   open: =>

@@ -2,11 +2,18 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h4> <%= @name %> </h4>
+        <h4> <%= @name %>
+          <% if @food:%> <i class='fa fa-cutlery'></i><% end %>
+          <% if @license:%> <i class='fa fa-beer'></i><% end %>
+          <% if @hot_drinks:%> <i class='fa fa-coffee'></i><% end %>
+        </h4>
       </div>
       <div class="modal-body">
-        <h5> Owner <%= @owner_name %> says: </h5>
+        <h5> <b> Owner <%= @owner_name %> says: </b></h5>
         <p> <%= @description %> </p>
+        </br>
+        <p> <i class='fa fa-laptop'></i> <a href= <%= "http://#{@url}" %>> <%=@url%> </a> </p>
+        <p> <i class='fa fa-phone'></i> <%=@phone_number%> </p>       
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

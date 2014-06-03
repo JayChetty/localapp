@@ -6,6 +6,8 @@ class Business < ActiveRecord::Base
   after_validation :geocode#, if: ->(obj){ obj.address.present? and obj.address_changed? }
   scope :verified, where(verified: true)
 
+  validates_presence_of :address, :name
+
   # scope :located, where("longitude IS NOT NULL AND latitude IS NOT NULL")
 
   # def self
