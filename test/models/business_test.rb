@@ -8,14 +8,18 @@ class BusinessTest < ActiveSupport::TestCase
   end
 
   test "creates with correct values" do
-    assert_equal @business.name, "BookLa"
+    assert_equal "BookLa", @business.name
   end
 
   test "it should have a single owner" do
-    assert_equal @business.owners.length, 1
+    assert_equal 1, @business.owners.length 
   end
 
   test "it's owner should be test" do
-    assert_equal @business.owners.first.email, "test@example.com"
+    assert_equal "test@example.com", @business.owners.first.email 
+  end
+
+  test "it should be verified by default" do
+    assert_equal true, @business.verified 
   end  
 end

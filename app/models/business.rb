@@ -8,6 +8,8 @@ class Business < ActiveRecord::Base
 
   validates_presence_of :address, :name
 
+  before_create :set_defaults
+
   # scope :located, where("longitude IS NOT NULL AND latitude IS NOT NULL")
 
   # def self
@@ -15,6 +17,11 @@ class Business < ActiveRecord::Base
   # def self.located
   #   scoped.where("longitude IS NOT NULL AND latitude IS NOT NULL")
   # end
+
+  def set_defaults
+    self.verified = true
+  end
+
   def owner_name
     owners.first.name
   end
