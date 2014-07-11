@@ -10,7 +10,7 @@
     <div id='side-main'> </div>
     <div id='side-admin' class='hidden'> Unverified List </div>
   </div>
-  <a id='sign-in' href="owners/sign_in" class='pull-right hidden'> <small> Sign In/Add My Workplace </small></a>
+  <a id='sign-in' href="owners/sign_up" class='pull-right hidden btn btn-warning'> Add My Workplace/Sign In </a>
   <div class='user_links'>    
     <div class="dropdown user-links hidden pull-right">
       <a class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
